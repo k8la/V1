@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>A23718E3-B0AE-435D-BCB6-3E9CD9E54AD2</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Duplicity</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>0AF46F29ACFB14EA34020BEE257B76760B8C0294</key>
+		<string>github.com:k8la/Duplicity.git</string>
+		<key>15DA59A63B779EE59A0207D5F1F6336C9527F239</key>
+		<string>https://github.com/k8la/JS.git</string>
+		<key>364300CED397AC377225C8B25728A5B15734A58D</key>
+		<string>https://github.com/k8la/Duplicity2.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Duplicity.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>0AF46F29ACFB14EA34020BEE257B76760B8C0294</key>
+		<string>../../../Dupe</string>
+		<key>15DA59A63B779EE59A0207D5F1F6336C9527F239</key>
+		<string>../../..</string>
+		<key>364300CED397AC377225C8B25728A5B15734A58D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/k8la/Duplicity2.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>364300CED397AC377225C8B25728A5B15734A58D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>15DA59A63B779EE59A0207D5F1F6336C9527F239</string>
+			<key>IDESourceControlWCCName</key>
+			<string></string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>0AF46F29ACFB14EA34020BEE257B76760B8C0294</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Dupe</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>364300CED397AC377225C8B25728A5B15734A58D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Duplicity%202</string>
+		</dict>
+	</array>
+</dict>
+</plist>
