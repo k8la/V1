@@ -34,46 +34,16 @@ class ListViewController: UIViewController, UITextFieldDelegate {
     /******* CODE ADDED END********/
     
     
-//    @IBAction func all(sender: AnyObject) {
-//    }
-//
-//
-//
-//    @IBAction func me(sender: AnyObject) {
-//        
-//        var username = PFUser.currentUser()["username"] as String
-//        
-//        
-//        var question = PFQuery(className:"Post")
-//        question.whereKey("username", equalTo: username)
-//        question.findObjectsInBackgroundWithBlock {
-//            (objects: [AnyObject]!, error: NSError!) -> Void in
-//            
-//            if error == nil {
-//                // The find succeeded.
-//                println("Successfully retrieved \(objects!.count) dupes.")
-//                // Do something with the found objects
-//                
-//                
-//                
-//                if let objects = objects as? [PFObject] {
-//                    for object in objects {
-//                        println(object.objectId)
-//                    }
-//                }
-//            } else {
-//                // Log details of the failure
-//                println("Error: \(error!) \(error!.userInfo!)")
-//            }
-//        }
-//
-//    }
+    
     
     
     var searchResults = []
     var searchActive : Bool = false
+    var allActive: Bool = true
     
     var filteredData = [Product]()
+    var myList = [Product]()
+    var allList = [Product]()
     
     var firstType = [String]()
     var firstBrand = [String]()
@@ -89,7 +59,6 @@ class ListViewController: UIViewController, UITextFieldDelegate {
     var secondImages = [UIImage]()
     var secondImageFiles = [PFFile]()
     
-    //    func updateSearchResultsForSearchController(searchController: UISearchController)
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         self.view.endEditing(true)
@@ -107,6 +76,7 @@ class ListViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.navigationItem.title = "DUPLICITY"
         
         self.navigationController?.navigationBar.titleTextAttributes = [NSFontAttributeName : UIFont(name: "HelveticaNeue-Light", size: 22)!]
@@ -166,7 +136,30 @@ class ListViewController: UIViewController, UITextFieldDelegate {
         ButtonAll.alpha = 1.0;
         
         
+        
+        
+        queryForTable()
+        
+    } // ends viewDidLoad
+    
+    
+    
+    func queryForTable() -> PFQuery {
+        
+        
+        var query:PFQuery = PFQuery(className: "Post")
+        
+//        if(objects?.count == 0)
+//        {
+//            query.cachePolicy = PFCachePolicy.CacheThenNetwork
+//        }
+        
+        query.orderByAscending("createdAt")
+        
+        return query
     }
+    
+    
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = false;
@@ -383,7 +376,35 @@ class ListViewController: UIViewController, UITextFieldDelegate {
         return 1
     }
     
+    
+    
+    
+    
+    
+    
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        
+        
+        
+        /////////////////////// Number of rows /////////////////////
+        
+        
+        if(allActive == false) {
+            return self.myList.count
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        ////////////////////////////////////////////////////////////
+        
         
         if(searchBar.text != "") {
             if(filteredData.count > 0)
@@ -437,8 +458,103 @@ class ListViewController: UIViewController, UITextFieldDelegate {
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        //        myCell.title.text = titles[indexPath.row]
-        //        myCell.username.text = usernames[indexPath.row]
+
+        if(allActive == false) {
+            
+            let cell = self.tableViewAll.dequeueReusableCellWithIdentifier("myCellAll", forIndexPath: indexPath) as CustomTableViewCell
+            
+            
+            cell.firstBrand.text = myList[indexPath.row].firstBrand
+            cell.firstName.text = myList[indexPath.row].firstName;
+            cell.firstPrice.text = "$" + myList[indexPath.row].firstPrice
+            cell.firstType.text = myList[indexPath.row].firstType
+            
+            
+            cell.secondBrand.text = myList[indexPath.row].secondBrand
+            cell.secondName.text = myList[indexPath.row].secondName
+            cell.secondPrice.text = "$" + myList[indexPath.row].secondPrice
+            cell.secondType.text = myList[indexPath.row].secondType
+            
+            
+            myList[indexPath.row].firstImageFiles.getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                
+                if error == nil {
+                    println("found image")
+                    let image = UIImage(data: imageData)
+                    
+                    cell.firstImage.image = image
+                }
+                
+            }
+            
+            
+            myList[indexPath.row].secondImageFiles.getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                
+                if error == nil {
+                    println("found image")
+                    let image = UIImage(data: imageData)
+                    
+                    cell.secondImage.image = image
+                }
+                
+            }
+//            cell.firstName.sizeToFit();
+            cell.updateConstraints();
+            
+            
+            return cell
+
+            
+        }
+        
+        if (allActive == true) {
+            let cell = self.tableViewAll.dequeueReusableCellWithIdentifier("myCellAll", forIndexPath: indexPath) as CustomTableViewCell
+            
+            
+            cell.firstBrand.text = firstBrand[indexPath.row]
+            cell.firstName.text = firstName[indexPath.row] + " " + firstType[indexPath.row]
+            cell.firstPrice.text = "$" + firstPrice[indexPath.row]
+            cell.firstType.text = firstType[indexPath.row]
+            
+            
+            cell.secondBrand.text = secondBrand[indexPath.row]
+            cell.secondName.text = secondName[indexPath.row] + " " + secondType[indexPath.row]
+            cell.secondPrice.text = "$" + secondPrice[indexPath.row]
+            cell.secondType.text = secondType[indexPath.row]
+            
+            
+            firstImageFiles[indexPath.row].getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                
+                if error == nil {
+                    println("found image")
+                    let image = UIImage(data: imageData)
+                    
+                    cell.firstImage.image = image
+                }
+                
+            }
+            
+            secondImageFiles[indexPath.row].getDataInBackgroundWithBlock{
+                (imageData: NSData!, error: NSError!) -> Void in
+                
+                if error == nil {
+                    println("found image")
+                    let image = UIImage(data: imageData)
+                    
+                    cell.secondImage.image = image
+                }
+                
+            }
+            
+            cell.firstName.sizeToFit();
+            cell.updateConstraints();
+            
+            
+            return cell
+        }
         
         
         //If any item is searched then show searched data else show all data
@@ -541,42 +657,87 @@ class ListViewController: UIViewController, UITextFieldDelegate {
         
         
     }
-
+    
     @IBAction func selectAllFromTable(sender: AnyObject) {
-
+        
+        allActive = true
+        
+        allList.removeAll(keepCapacity: false)
+        
+        var query = PFQuery(className:"Post")
+        
+        query.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            if error == nil {
+                //success
+                println("You're viewing all \(objects.count) dupes.")
+                
+                for object in objects {
+                    
+                    var tempProduct = Product()
+                    tempProduct.firstBrand = object["firstBrand"] as String
+                    tempProduct.firstName = object["firstName"] as String
+                    tempProduct.firstPrice = object["firstPrice"] as String
+                    tempProduct.firstType = object["firstType"] as String
+                    tempProduct.firstImageFiles = object["firstImageFile"] as PFFile
+                    
+                    
+                    tempProduct.secondBrand = object["secondBrand"] as String
+                    tempProduct.secondName = object["secondName"] as String
+                    tempProduct.secondPrice = object["secondName"] as String
+                    tempProduct.secondType = object["secondType"] as String
+                    tempProduct.secondImageFiles = object["secondImageFile"] as PFFile
+                    self.allList.append(tempProduct)
+                    
+                    
+                    self.tableViewAll.reloadData()
+                } // for ojbect in objects
+                
+            } else {
+                println(error)
+            } // if error == nil
+            
+        } //query.findObjects
+        
+        
+        
         viewLineAll.backgroundColor = UIColor(red: 184/255, green: 37/255, blue: 110/255, alpha: 1.0);
         viewLineMe.backgroundColor = UIColor.clearColor()
         ButtonMe.alpha = 0.5;
         ButtonAll.alpha = 1.0;
-
-
+        
+        
     }
+    
+    
+    
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-     {
+    {
         if( searchActive == true )
         {
             /******* CODE ADDED ********/
-
+            
             self.viewOpen.hidden = true;
             /******* CODE ADDED END********/
-
+            
             self.view.endEditing(true)
         }
-
+            
         else if(tableView == tableViewSearched)
         {
             /******* CODE ADDED ********/
-
+            
             self.viewOpen.hidden = true;
             /******* CODE ADDED END********/
-
-//            self.performSegueWithIdentifier("showFeature", sender: nil);
+            
+            self.performSegueWithIdentifier("showFeature", sender: nil);
         }
             
             /******* CODE ADDED ********/
         else if(tableView == tableViewAll)
         {
-        
+            
             self.viewOpen.hidden = false;
             
             firstBrandOpen.text = firstBrand[indexPath.row]
@@ -613,30 +774,77 @@ class ListViewController: UIViewController, UITextFieldDelegate {
                     self.secondImageOpen.image = image
                 }
             }
-//            
-//                self.firstNameOpen.sizeToFit();
-//            
-//            self.firstNameOpen.updateConstraints();
-//
-
+            //            
+            //                self.firstNameOpen.sizeToFit();
+            //            
+            //            self.firstNameOpen.updateConstraints();
+            //
+            
             
         }
         /******* CODE ADDED END********/
-
         
-
-
+        
+        
+        
     }
-
+    
     @IBAction func selectMe(sender: AnyObject) {
-
+        
+        myList.removeAll(keepCapacity: false)
+        
+        allActive = false
+        
         viewLineMe.backgroundColor = UIColor(red: 184/255, green: 37/255, blue: 110/255, alpha: 1.0);
         viewLineAll.backgroundColor = UIColor.clearColor()
         ButtonAll.alpha = 0.5;
         ButtonMe.alpha = 1.0;
+        
+        var username = PFUser.currentUser()["username"] as String
+        
+        var question = PFQuery(className:"Post")
+        question.whereKey("username", equalTo: username)
+        question.findObjectsInBackgroundWithBlock {
+            (objects: [AnyObject]!, error: NSError!) -> Void in
+            
+            if error == nil {
+                // The find succeeded.
+                println("\(username) has \(objects!.count) dupes.")
+                // Do something with the found objects
+                
 
+                
+                if let objects = objects as? [PFObject] {
+                    for object in objects {
+                        
+                        var tempProduct = Product()
+                        tempProduct.firstBrand = object["firstBrand"] as String
+                        tempProduct.firstName = object["firstName"] as String
+                        tempProduct.firstPrice = object["firstPrice"] as String
+                        tempProduct.firstType = object["firstType"] as String
+                        tempProduct.firstImageFiles = object["firstImageFile"] as PFFile
+
+
+                        tempProduct.secondBrand = object["secondBrand"] as String
+                        tempProduct.secondName = object["secondName"] as String
+                        tempProduct.secondPrice = object["secondPrice"] as String
+                        tempProduct.secondType = object["secondType"] as String
+                        tempProduct.secondImageFiles = object["secondImageFile"] as PFFile
+                        self.myList.append(tempProduct)
+                        
+                        
+                        self.tableViewAll.reloadData()
+                        
+                        
+                    }
+                }
+            } else {
+                // Log details of the failure
+                println("Error: \(error!) \(error!.userInfo!)")
+            }
+        }
+        
     }
-
 
 
     

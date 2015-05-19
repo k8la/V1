@@ -162,7 +162,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="hQx-wM-a7R" firstAttribute="height" secondItem="iXo-vV-7RR" secondAttribute="height" id="1rI-aB-AdM"/>
                             <constraint firstItem="hQx-wM-a7R" firstAttribute="top" secondItem="E2X-q1-BXT" secondAttribute="bottom" id="2uz-9O-1A9"/>
@@ -515,7 +515,7 @@
                                         </constraints>
                                         <color key="textColor" red="1" green="0.9873730852" blue="0.99488643210000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                 <color key="value" red="0.76636240433673475" green="0.76636240433673475" blue="0.76636240433673475" alpha="1" colorSpace="calibratedRGB"/>
@@ -579,7 +579,7 @@
                                         </constraints>
                                         <color key="textColor" red="1" green="0.9873730852" blue="0.99488643210000005" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="color" keyPath="placeholderLabel.textColor">
                                                 <color key="value" red="0.74282525510204089" green="0.74282525510204089" blue="0.74282525510204089" alpha="1" colorSpace="calibratedRGB"/>
@@ -1231,7 +1231,7 @@
                                     <action selector="cancel:" destination="r5e-nV-Qj0" eventType="touchUpInside" id="D2a-82-sHR"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="0F2C3624-05A5-46E7-BAF5-4A1ADF064C2D" translatesAutoresizingMaskIntoConstraints="NO" id="3nV-Zx-Ozn">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AA331ECD-0E86-48D8-9824-A72956EDE96D" translatesAutoresizingMaskIntoConstraints="NO" id="3nV-Zx-Ozn">
                                 <rect key="frame" x="19" y="43" width="558" height="1"/>
                                 <color key="backgroundColor" white="0.66666666669999997" alpha="0.57999999999999996" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1252,6 +1252,9 @@
                                             <color key="titleColor" red="0.9613035821" green="0.98347815689999996" blue="0.96749584389999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectAllFromTable:" destination="r5e-nV-Qj0" eventType="touchUpInside" id="Ohh-PS-eEj"/>
+                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SVA-bx-S45">
                                         <rect key="frame" x="0.0" y="34" width="70" height="2"/>
@@ -1280,6 +1283,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <action selector="selectMe:" destination="r5e-nV-Qj0" eventType="touchUpInside" id="tJ1-zX-GdG"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1755,7 +1761,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0F2C3624-05A5-46E7-BAF5-4A1ADF064C2D" width="1683" height="6">
+        <image name="AA331ECD-0E86-48D8-9824-A72956EDE96D" width="1683" height="6">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGOzxYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK0HCBEW
 GxwgISksLzU4VSRudWxs1AkKCwwNDg8QViRjbGFzc1xOU0ltYWdlRmxhZ3NWTlNSZXBzV05TQ29sb3KA
@@ -2506,6 +2512,6 @@ rGaseKx7rIAAAAAAAAACAQAAAAAAAAA/AAAAAAAAAAAAAAAAAACsgg
         <image name="login1.png" width="1800" height="1800"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pfI-Jh-nyZ"/>
+        <segue reference="SDR-KI-zfc"/>
     </inferredMetricsTieBreakers>
 </document>

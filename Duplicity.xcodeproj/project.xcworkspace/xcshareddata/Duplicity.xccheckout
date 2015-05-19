@@ -16,6 +16,8 @@
 		<string>https://github.com/k8la/JS.git</string>
 		<key>364300CED397AC377225C8B25728A5B15734A58D</key>
 		<string>https://github.com/k8la/Duplicity2.git</string>
+		<key>65C79745FEAAF2DBDBF6FFD80C1EC9B878362829</key>
+		<string>https://github.com/k8la/V1.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Duplicity.xcodeproj</string>
@@ -26,14 +28,16 @@
 		<key>15DA59A63B779EE59A0207D5F1F6336C9527F239</key>
 		<string>../../..</string>
 		<key>364300CED397AC377225C8B25728A5B15734A58D</key>
+		<string>../../../Duplicity%202</string>
+		<key>65C79745FEAAF2DBDBF6FFD80C1EC9B878362829</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/k8la/Duplicity2.git</string>
+	<string>https://github.com/k8la/V1.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>364300CED397AC377225C8B25728A5B15734A58D</string>
+	<string>65C79745FEAAF2DBDBF6FFD80C1EC9B878362829</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -59,6 +63,14 @@
 			<string>364300CED397AC377225C8B25728A5B15734A58D</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Duplicity%202</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>65C79745FEAAF2DBDBF6FFD80C1EC9B878362829</string>
+			<key>IDESourceControlWCCName</key>
+			<string>KateV1.0</string>
 		</dict>
 	</array>
 </dict>

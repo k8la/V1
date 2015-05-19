@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class PostViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+class PostViewController: UIViewController, UINavigationControllerDelegate,UIImagePickerControllerDelegate, UITextFieldDelegate {
     
     
     var activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -153,7 +153,7 @@ class PostViewController: UIViewController, UINavigationControllerDelegate,UIIma
                     UIApplication.sharedApplication().endIgnoringInteractionEvents()
                     
                     
-                    //                self.displayAlert("Dupe Posted!", error: "Your dupe has been posted successfully")
+                    self.displayAlert("Error", error: "Please try again later")
                     
                     println("fuxored")
                     
@@ -291,6 +291,9 @@ class PostViewController: UIViewController, UINavigationControllerDelegate,UIIma
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         self.navigationController?.navigationBarHidden = true;
 
         let tapRecognizer = UITapGestureRecognizer()
